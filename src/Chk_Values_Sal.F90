@@ -1,0 +1,19 @@
+program chk_values_sal
+
+!THIS PROGRAM PROVIDES AN EASY WAY FOR THE USER TO COMPARE RESULTS FROM THE SAL ROUTINES
+!RUN LOCALLY WITH THE CHECK VALUES PROVIDED IN THE VARIOUS ROUTINES
+
+!THIS PROGRAM REQUIRES
+!     CONSTANTS_0, FILE CONSTANTS_0.F90
+!     CONVERT_0,   FILE CONVERT_0.F90
+!     SAL_1,       FILE SAL_1.F90
+!     SAL_2,       FILE SAL_2.F90
+
+use values_sal
+
+implicit none 
+!character*11, private :: version = '31 Jan 2012'
+
+call sal_chk_values
+
+end program

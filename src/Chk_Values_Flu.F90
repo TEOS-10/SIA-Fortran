@@ -1,0 +1,22 @@
+program chk_values_flu
+
+!THIS PROGRAM PROVIDES AN EASY WAY FOR THE USER TO COMPARE RESULTS FROM THE FLU ROUTINES
+!RUN LOCALLY WITH THE CHECK VALUES PROVIDED IN THE VARIOUS ROUTINES
+
+!THIS PROGRAM REQUIRES
+!     CONSTANTS_0, FILE CONSTANTS_0.F90
+!     CONVERT_0,   FILE CONVERT_0.F90
+!     FLU_1,       FILE FLU_1.F90
+!     FLU_2,       FILE FLU_2.F90
+!     FLU_3A,      FILE FLU_3A.F90
+!     FLU_3B,      FILE FLU_3B.F90
+!     LIQ_F03_5,   FILE LIQ_F03_5
+
+use values_flu
+
+implicit none 
+!character*11, private :: version = '31 Jan 2012'
+
+call flu_chk_values
+
+end program

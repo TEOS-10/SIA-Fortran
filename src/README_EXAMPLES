@@ -1,0 +1,83 @@
+This sub-directory includes a simple example routine (Example_Calculations.F90) and routines 
+to check for agreement with various results tabulated in previous publications as well as 
+comparisons with the check values included in the library routines.
+
+The check routines are included here for the convenience of users so they can easily check the results 
+produced by a local implementation.  They also provide examples of the way the library routines are 
+intended to be used in user applications.  Compiling and linking these check routines to the library 
+routines creates executables that produce tables showing comparisons of library 
+results with results tabulated in previous publications (the Chk_Tables_ routines) and also with 
+the check values given in comments in the main library routines (the Chk_Values_ routines).
+
+The routine "Chk_Tables_OS2008" is included with the library so that the user can easily verify consistency 
+of results produced using a local implementation with the results presented in Feistel et al. 2008. 
+"Chk_Tables_Air" provides the corresponding capability for results obtained from the air routines, 
+"Chk_Tables_IF97" is included to provide a check on the industrial formulations (IAPWS-2007) of the 
+IAPWS-95 routines and Chk_Tables_F03" is included to provide a check on the Gibbs function for 
+seawater from Feistel (2003).  Chk_Tables_All.F90 may be used to produce all of the check tables
+by executing the single routine Chk_Tabes_All.
+
+Once executables are created as discussed below, the user can then check the library results against 
+various tabulated results by executing the Chk_Tables* routines.  For example, entering Check_Tables_OS2008 
+will result in all of the results available in the tables given by Feistel et al (2008)ng output to std_out.  
+These results are most easily viewed by piping them to a new file that the user can then view.  E.g., 
+./Check_Tables_OS2008 > os2008 produces an ascii file called os2008 that the reader can view with their 
+favorite editor.
+
+The "Chk_Values_" routines in this sub-directory are included to allow the user to easily check that a local 
+implementation of the library is providing correct results.  The executables are created as described below.  
+Once they are created, the user may then execute the Check_Values_* routines to produce outputs showing what 
+routine was called with what parameters plus the results produced by the implementation being tested together 
+with the corresponding check values as they appear in the library routines.  Chk_Values_All.F90 may be used to 
+produce a single file containing a comparison of locally calculated values with all of the check values in 
+the library routines.
+
+Note that the check values included in the library are the values produced by the Visual Basic code on one 
+particular platform.  In our experience, these should agree with those determined on other platforms or using 
+other programming languages to 12 or more digits for the results involving a single phase and to 9 or more digits 
+for results involving equilibria between phases.  The check values included as comments in the library routines 
+have a vertical bar inserted where one particular implementation in Visual Basic stops agreeing with a particular 
+implementation in fortran.
+
+
+
+Three different approaches are provided for compiling the fortran programs.  In each case, you will need to edit the script 
+to give it the correct path for libdir, the directory where your library files are.  Once that is done, each of the approaches 
+should work for this directory located anywhere on your system.
+
+Note that there is redundancy in the scripts discussed below.  If one works then you don't need the others.
+They are in order of preference.  
+
+Option #1 is quite general and automated. It creates a makefile so that future compiles won't have to 
+redo work unless it is necessary.
+
+Option #2 is less general but still written to be simple to use. It uses a previously created makefile so that once it is modified 
+for your needs, future compiles won't have to redo work unless it is necessary. All the library files are automatically available, 
+but you have to provide dependencies for any new program.
+
+Option #3 is a very basic compile script.  All the library files are automatically available, but it repeats all compiles each time 
+it is executed.  Compiling the SIA library doesn't take long so this isn't really a big issue.
+
+1. TEOSf90.sh can be used to create an executable for any .F90 file simply by entering "TEOSf90.sh filename.F90 <return>".
+Note that in ths case the .F90 is included.  The TEOSf90 script uses the script fmkmf.sh located in the main
+libary directory to make a makefile for the specified F90 file which will appear as Makefile_filename.  This makefile 
+is automatically executed by TEOSf90 so the executable 'filename' will also be produced.  The user can execute the later 
+simply by entering its name.  Note that if there is more than one .F90 file then executables for each of the .F90 files 
+can be produced by repeating this process.  To use the makefiles produced by TEOSf90.sh, the user must enter 
+'make filename -f TEOSmake_filename'.  Note that the .F90 is stripped off.  If this option fails to work, it probably 
+means that perl isn't installed on your system.  It's free so you can just install it.  If you try one of the other options, 
+you might want to edit clean.sh so that it doesn't keep telling you that the Makefile_XXX can't be found.
+
+
+2. If opt #1 fails, you can go to the directory SIMPLE_COMPILERS and consider one of the choices providded there.  The makefiles 
+there were produced by the fmkmf.sh script for Example.F90, Chk_Tables_All.F90 and Chk_Values_All.F90 .  You can just use it for 
+the Example after modifying libdir for your system. If you have your own program with a different name, it should be a simple 
+matter to edit the file "makefile" to get your program working.  Note that the whole SIA library is made available with the 
+makefile called "makefile" so you should only have to change the name of the .F90 file and enter its dependencies. 
+
+3. The script compile.sh in the SIMPLE_COMPILERS directory is a simple script that compiles the library and then links Examples
+to the appropriate routines.  Again, the whole library is compiled so that it is easily available.  To compile Examples.F90,
+you should just need to enter the correct name for libdir, copy the script to this directory and then enter ./compile.sh.  
+Make sure that compile.sh is an executable file, e.g. enter "chmod u+x compile.sh <enter>".  
+
+

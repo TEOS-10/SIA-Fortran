@@ -1,0 +1,70 @@
+# ------------------Macro-Defs---------------------
+F90=f90 
+
+# -------------------End-macro-Defs---------------------------
+
+# Here is the link step 
+Chk_Tables_All:Constants_0.o Convert_0.o Maths_0.o Air_1.o Flu_1.o Ice_1.o Sal_1.o Air_2.o Flu_2.o Sal_2.o Air_3a.o Air_3b.o Flu_3a.o Liq_Vap_4.o Flu_IF97_5.o Liq_F03_5.o OS2008_5.o Chk_Tables_All.o 
+	 $(F90) -o Chk_Tables_All Constants_0.o Convert_0.o Maths_0.o Air_1.o Flu_1.o Ice_1.o Sal_1.o Air_2.o Flu_2.o Sal_2.o Air_3a.o Air_3b.o Flu_3a.o Liq_Vap_4.o Flu_IF97_5.o Liq_F03_5.o OS2008_5.o Chk_Tables_All.o   
+
+# Here are the compile steps
+ 
+Constants_0.o:/home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Constants_0.F90  
+	 $(F90) -c /home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Constants_0.F90 
+
+Convert_0.o:/home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Convert_0.F90 Constants_0.o 
+	 $(F90) -c /home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Convert_0.F90 
+
+Maths_0.o:/home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Maths_0.F90 Constants_0.o 
+	 $(F90) -c /home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Maths_0.F90 
+
+Air_1.o:/home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Air_1.F90 Constants_0.o 
+	 $(F90) -c /home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Air_1.F90 
+
+Flu_1.o:/home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Flu_1.F90 Constants_0.o 
+	 $(F90) -c /home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Flu_1.F90 
+
+Ice_1.o:/home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Ice_1.F90 Constants_0.o 
+	 $(F90) -c /home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Ice_1.F90 
+
+Sal_1.o:/home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Sal_1.F90 Constants_0.o 
+	 $(F90) -c /home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Sal_1.F90 
+
+Air_2.o:/home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Air_2.F90 Constants_0.o Air_1.o Flu_1.o 
+	 $(F90) -c /home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Air_2.F90 
+
+Flu_2.o:/home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Flu_2.F90 Constants_0.o Flu_1.o 
+	 $(F90) -c /home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Flu_2.F90 
+
+Sal_2.o:/home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Sal_2.F90 Constants_0.o Sal_1.o 
+	 $(F90) -c /home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Sal_2.F90 
+
+Air_3a.o:/home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Air_3a.F90 Constants_0.o Convert_0.o Maths_0.o Air_1.o Air_2.o 
+	 $(F90) -c /home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Air_3a.F90 
+
+Air_3b.o:/home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Air_3b.F90 Constants_0.o Convert_0.o Air_1.o Air_2.o Air_3a.o 
+	 $(F90) -c /home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Air_3b.F90 
+
+Flu_3a.o:/home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Flu_3a.F90 Constants_0.o Convert_0.o Maths_0.o Flu_1.o 
+	 $(F90) -c /home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Flu_3a.F90 
+
+Liq_Vap_4.o:/home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Liq_Vap_4.F90 Constants_0.o Maths_0.o Flu_1.o Flu_2.o Flu_3a.o 
+	 $(F90) -c /home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Liq_Vap_4.F90 
+
+Flu_IF97_5.o:/home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Flu_IF97_5.F90 Constants_0.o 
+	 $(F90) -c /home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Flu_IF97_5.F90 
+
+Liq_F03_5.o:/home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Liq_F03_5.F90 Constants_0.o 
+	 $(F90) -c /home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//Liq_F03_5.F90 
+
+OS2008_5.o:/home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//OS2008_5.F90 Flu_1.o Ice_1.o Sal_1.o Flu_2.o Sal_2.o Flu_3a.o Liq_Vap_4.o 
+	 $(F90) -c /home101/dwright/IAPWS/TEOS10-0.0.4/SIA_library//OS2008_5.F90 
+
+Chk_Tables_All.o:Chk_Tables_All.F90 Constants_0.o Convert_0.o Maths_0.o Air_1.o Flu_1.o Ice_1.o Sal_1.o Air_2.o Flu_2.o Sal_2.o Air_3b.o Flu_3a.o Liq_Vap_4.o Flu_IF97_5.o Liq_F03_5.o OS2008_5.o 
+	 $(F90) -c Chk_Tables_All.F90 
+# This entry allows you to type " make clean " to get rid of
+# all object and module files 
+clean:
+	rm -f -r f_{files,modd}* *.o *.mod *.M *.d V*.inc *.vo \
+	V*.f *.dbg album F.err
+  

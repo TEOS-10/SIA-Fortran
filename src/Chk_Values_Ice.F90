@@ -1,0 +1,19 @@
+program chk_values_ice
+
+!THIS PROGRAM PROVIDES AN EASY WAY FOR THE USER TO COMPARE RESULTS FROM THE ICE ROUTINES
+!RUN LOCALLY WITH THE CHECK VALUES PROVIDED IN THE VARIOUS ROUTINES
+
+!THIS PROGRAM REQUIRES
+!     CONSTANTS_0, FILE CONSTANTS_0.F90
+!     CONVERT_0,   FILE CONVERT_0.F90
+!     ICE_1,       FILE ICE_1.F90
+!     ICE_2,       FILE ICE_2.F90
+
+use values_ice
+
+implicit none 
+!character*11, private :: version = '31 Jan 2012'
+
+call ice_chk_values
+
+end program
