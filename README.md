@@ -18,9 +18,9 @@ CMake advocates for out of source builds - i.e. the compilation is done outside 
 
 Using a terminal and it works on Windows, Max and Linux
 ```
-cd <sia\_source\_code\_folder>
-mkdir \_build
-cd \_build
+cd <sia_source_code_folder>
+mkdir _build
+cd _build
 cmake ../
 ```
 
@@ -47,7 +47,7 @@ Note - graphical user interfaces exists for CMake on all platforms.
 On Mac, Linux:
 ```
 make install
-make all\_checks
+make all_checks
 ```
 
 On Windows:
