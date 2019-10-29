@@ -17,12 +17,12 @@ CMake advocates for out of source builds - i.e. the compilation is done outside 
 ### Command line configuration: 
 
 Using a terminal and it works on Windows, Max and Linux
-´´´
+```
 cd <sia\_source\_code\_folder>
 mkdir \_build
 cd \_build
 cmake ../
-´´´
+```
 
 Further options can be provided to CMake. Two will be mentioned here:
   - -DCMAKE\_Fortran\_COMPILER="full path to a working Fortran compiler"
@@ -45,10 +45,10 @@ Note - graphical user interfaces exists for CMake on all platforms.
 ### Building and installing
 
 On Mac, Linux:
-´´´
+```
 make install
 make all\_checks
-´´´
+```
 
 On Windows:
 The configuration process has created a file called _sia-sln_ - open this file in VisualStudio. The top-left corner shows a Window called 'Solution Explorer' expand CMakePredefinedTargets -> RightClick on 'Install' and select 'Build'.
