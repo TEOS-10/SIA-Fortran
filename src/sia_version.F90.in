@@ -1,0 +1,3 @@
+module sia_mod_version
+   character(len=*), parameter :: sia_version = "@PROJECT_VERSION@"
+end module
