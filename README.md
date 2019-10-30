@@ -57,3 +57,36 @@ To carry out all the various checks RightClick on 'all\_checks' and select 'Buil
 
 Note - the above is done with Visual Studio Community 2017 - slight differences with other versions are expected.
 
+### Using SIA in your own code
+
+After installation the SIA libraries can be used both via CMake based systems - and via normal compilation methods.
+
+In both examples below the SIA installation folde is - _$HOME/local_ and the main Fortran file is called sia_test.F90
+```
+program sia_test
+use constants_0
+use sea_3a
+write(*,*) sea_g_si(0,0,0,0.035d0,300d0,1d5)
+end program
+```
+
+#### CMake example:
+
+Eample CMakeLists.txt file:
+
+```
+cmake_minimum_required(VERSION 3.0)
+project(sia_test VERSION 0.1.0 LANGUAGES Fortran)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "/home/kb/local/cmake")
+find_package(sia REQUIRED)
+add_executable(sia_test sia_test.F90)
+target_link_libraries(sia_test PUBLIC sia_static)
+#target_link_libraries(sia_test PUBLIC sia_shared)
+```
+#### Make example:
+
+Command line example:
+```
+gfortran-8 sia_test.F90 -I$HOME/local/include/teos10_sia -L$HOME/local/lib -lteos10_siaf
+```
+
